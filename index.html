@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donnie Bolen — Delivery Manager & Scrum Master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #1a1a18; --ink-muted: #5a5a54; --ink-faint: #9a9a90;
+  --paper: #f7f5f0; --paper-warm: #edeae2;
+  --copper: #8f4a1a; --copper-light: #b86a35; --copper-pale: #f2e8df;
+  --rule: #d4cfc5;
+  --ai-accent: #2d4a8a; --ai-pale: #e8edf8; --ai-mid: #4a6ab0;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --mono: 'DM Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.7; font-size: 16px; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+  padding: 0 3rem; display: flex; align-items: center; justify-content: space-between; height: 56px;
+}
+.nav-logo { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--ink-muted); text-decoration: none; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--copper); }
+
+/* HERO */
+.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 88vh; border-bottom: 1px solid var(--rule); }
+.hero-left { padding: 5rem 4rem 5rem 5rem; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--rule); }
+.hero-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--copper); margin-bottom: 1.5rem; }
+.hero-name { font-family: var(--serif); font-size: clamp(3rem, 4.5vw, 5rem); font-weight: 700; line-height: 1.05; margin-bottom: 1.5rem; }
+.hero-name em { font-style: italic; color: var(--copper); }
+.hero-tagline { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 42ch; margin-bottom: 2.5rem; line-height: 1.85; }
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-size: 12px; font-family: var(--sans); font-weight: 500; letter-spacing: 0.05em; text-decoration: none; border: 1.5px solid; transition: all 0.22s; cursor: pointer; }
+.btn-primary { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: var(--copper); border-color: var(--copper); }
+.btn-outline { background: transparent; border-color: var(--rule); color: var(--ink); }
+.btn-outline:hover { border-color: var(--ink); }
+.hero-right { padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; background: var(--paper-warm); gap: 2rem; }
+.stat-block { border-left: 2px solid var(--copper); padding-left: 1.5rem; }
+.stat-number { font-family: var(--serif); font-size: 2.6rem; font-weight: 700; line-height: 1; color: var(--ink); }
+.stat-label { font-size: 13px; color: var(--ink-muted); margin-top: 0.25rem; font-weight: 300; }
+
+/* AI BANNER */
+.ai-banner { background: var(--ai-accent); color: #fff; padding: 2.5rem 5rem; display: flex; align-items: flex-start; gap: 3rem; }
+.ai-banner-glyph { font-size: 2rem; opacity: 0.8; flex-shrink: 0; margin-top: 0.25rem; }
+.ai-banner-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
+.ai-banner h2 { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
+.ai-banner p { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,0.82); max-width: 72ch; }
+.ai-tools-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+.ai-pill { display: inline-flex; align-items: center; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); padding: 0.25rem 0.85rem; font-size: 11px; font-family: var(--mono); letter-spacing: 0.05em; border-radius: 100px; color: rgba(255,255,255,0.88); }
+
+/* SECTION */
+section { border-bottom: 1px solid var(--rule); }
+.section-inner { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+.section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3.5rem; }
+.section-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--copper); white-space: nowrap; }
+.section-title { font-family: var(--serif); font-size: 2.1rem; font-weight: 700; color: var(--ink); }
+.section-rule { flex: 1; height: 1px; background: var(--rule); }
+
+/* AI WORK GRID */
+.ai-work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--rule); border: 1.5px solid var(--rule); }
+.ai-card { background: var(--paper); padding: 2rem 2rem 2.5rem; transition: background 0.2s; }
+.ai-card:hover { background: var(--ai-pale); }
+.ai-card-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ai-mid); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
+.ai-card-tag::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--ai-mid); flex-shrink: 0; }
+.ai-card h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.7rem; color: var(--ink); }
+.ai-card p { font-size: 0.875rem; color: var(--ink-muted); line-height: 1.75; font-weight: 300; }
+.ai-card-tools { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.1rem; }
+.tool-tag { font-family: var(--mono); font-size: 10px; padding: 0.18rem 0.6rem; background: var(--ai-pale); color: var(--ai-accent); border: 1px solid rgba(45,74,138,0.18); }
+.ai-card-featured { background: var(--ai-accent); }
+.ai-card-featured:hover { background: #223d7a; }
+.ai-card-featured .ai-card-tag { color: rgba(255,255,255,0.55); }
+.ai-card-featured .ai-card-tag::before { background: rgba(255,255,255,0.55); }
+.ai-card-featured h3 { color: #fff; }
+.ai-card-featured p { color: rgba(255,255,255,0.78); }
+.ai-card-featured .tool-tag { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.2); }
+.ai-card-wide { grid-column: span 2; }
+
+/* CASE STUDIES */
+.case-studies { display: flex; flex-direction: column; }
+.case-study { display: grid; grid-template-columns: 3fr 5fr; border: 1.5px solid var(--rule); border-bottom: none; transition: background 0.2s; }
+.case-study:last-child { border-bottom: 1.5px solid var(--rule); }
+.case-study:hover { background: var(--paper-warm); }
+.case-meta { padding: 2.5rem; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 0.6rem; }
+.case-number { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); }
+.case-type { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--copper); }
+.case-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: var(--ink); line-height: 1.2; margin-top: 0.2rem; }
+.case-body { padding: 2.5rem; }
+.case-body p { font-size: 0.875rem; color: var(--ink-muted); line-height: 1.8; font-weight: 300; margin-bottom: 1.1rem; }
+.outcome-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.outcome-list li { font-size: 0.85rem; color: var(--ink); display: flex; align-items: flex-start; gap: 0.7rem; }
+.outcome-list li::before { content: '→'; color: var(--copper); flex-shrink: 0; font-family: var(--mono); margin-top: 1px; }
+
+/* EXPERTISE */
+.expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.expertise-card { border-top: 2px solid var(--copper); padding-top: 1.5rem; }
+.expertise-card h3 { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; }
+.expertise-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+.expertise-card ul li { font-size: 0.85rem; color: var(--ink-muted); font-weight: 300; padding-left: 0.9rem; position: relative; }
+.expertise-card ul li::before { content: '·'; position: absolute; left: 0; color: var(--copper); font-weight: 700; }
+
+/* CERTS */
+.certs-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 3rem; }
+.cert-card { border: 1.5px solid var(--rule); padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.2rem; flex: 1; min-width: 190px; }
+.cert-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--copper); }
+.cert-name { font-size: 0.875rem; font-weight: 500; color: var(--ink); }
+.cert-org { font-size: 0.78rem; color: var(--ink-muted); font-weight: 300; }
+.cert-date { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); margin-top: 0.1rem; }
+
+/* TIMELINE */
+.timeline { display: flex; flex-direction: column; }
+.timeline-entry { display: grid; grid-template-columns: 200px 1fr; gap: 0 3rem; padding: 2.25rem 0; border-bottom: 1px solid var(--rule); }
+.timeline-entry:last-child { border-bottom: none; }
+.timeline-date { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); padding-top: 0.3rem; text-align: right; }
+.timeline-content h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.15rem; }
+.timeline-org { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; color: var(--copper); margin-bottom: 0.8rem; }
+.timeline-content ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.5rem; }
+.timeline-content ul li { font-size: 0.85rem; color: var(--ink-muted); font-weight: 300; display: flex; align-items: flex-start; gap: 0.6rem; }
+.timeline-content ul li::before { content: '·'; color: var(--copper); flex-shrink: 0; font-weight: 700; }
+.ai-badge { display: inline-block; background: var(--ai-pale); color: var(--ai-accent); border: 1px solid rgba(45,74,138,0.2); font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.15rem 0.55rem; margin-bottom: 0.75rem; }
+
+/* SKILLS */
+.skills-section { background: var(--ink); border-bottom: none; }
+.skills-section .section-title { color: var(--paper); }
+.skills-section .section-eyebrow { color: var(--copper-light); }
+.skills-section .section-rule { background: rgba(255,255,255,0.1); }
+.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-left: 1px solid rgba(255,255,255,0.07); border-top: 1px solid rgba(255,255,255,0.07); margin-top: 3rem; }
+.skill-item { border-right: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); padding: 1.5rem 1.75rem; }
+.skill-name { font-size: 0.875rem; font-weight: 500; color: var(--paper); margin-bottom: 0.5rem; }
+.skill-bar-track { height: 2px; background: rgba(255,255,255,0.1); }
+.skill-bar-fill { height: 100%; width: 0%; transition: width 1.2s ease; }
+.skill-bar-copper { background: var(--copper-light); }
+.skill-bar-blue { background: #7a9cd4; }
+.skill-category { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
+
+/* CONTACT */
+.contact-section { background: var(--paper-warm); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.contact-headline { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; line-height: 1.1; }
+.contact-headline em { font-style: italic; color: var(--copper); }
+.contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.contact-link { display: flex; align-items: center; gap: 1.25rem; text-decoration: none; color: var(--ink); padding: 1rem 1.25rem; border: 1px solid var(--rule); background: var(--paper); transition: all 0.2s; }
+.contact-link:hover { border-color: var(--copper); background: var(--copper-pale); }
+.contact-link-icon { font-size: 1.1rem; color: var(--copper); width: 1.4rem; text-align: center; }
+.contact-link-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-faint); }
+.contact-link-value { font-size: 0.9rem; font-weight: 500; }
+
+/* FOOTER */
+footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--rule); }
+footer p { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.04em; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.65s ease both; }
+.d1 { animation-delay: 0.08s; } .d2 { animation-delay: 0.2s; } .d3 { animation-delay: 0.35s; } .d4 { animation-delay: 0.5s; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 3rem 2rem; border-right: none; border-bottom: 1px solid var(--rule); }
+  .hero-right { padding: 2.5rem 2rem; flex-direction: row; flex-wrap: wrap; gap: 1.5rem; }
+  .ai-banner { padding: 2rem; flex-direction: column; gap: 1rem; }
+  .ai-work-grid { grid-template-columns: 1fr; }
+  .ai-card-wide { grid-column: span 1; }
+  .case-study { grid-template-columns: 1fr; }
+  .case-meta { border-right: none; border-bottom: 1px solid var(--rule); }
+  .expertise-grid { grid-template-columns: 1fr 1fr; }
+  .timeline-entry { grid-template-columns: 1fr; gap: 0.25rem; }
+  .timeline-date { text-align: left; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem 2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">dbolen.github.io</a>
+  <ul class="nav-links">
+    <li><a href="#ai-work">AI Work</a></li>
+    <li><a href="#case-studies">Case Studies</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow fade-up d1">Delivery Manager · Scrum Master · Product Owner</p>
+    <h1 class="hero-name fade-up d2">Donnie<br><em>Bolen</em></h1>
+    <p class="hero-tagline fade-up d3">Delivery Manager and dual-certified Scrum Master / Product Owner with 8+ years leading digital products at a global policy organization whose membership spans heads of state and Fortune 500 executives. AI-native practitioner — actively building with Claude, ChatGPT, and Gemini to accelerate delivery and surface product insights.</p>
+    <div class="hero-cta fade-up d4">
+      <a href="#case-studies" class="btn btn-primary">View case studies</a>
+      <a href="#contact" class="btn btn-outline">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-block fade-up d1">
+      <div class="stat-number">8+</div>
+      <div class="stat-label">Years at CFR leading digital product delivery</div>
+    </div>
+    <div class="stat-block fade-up d2">
+      <div class="stat-number">30%</div>
+      <div class="stat-label">Delivery velocity increase through Scrum best practices</div>
+    </div>
+    <div class="stat-block fade-up d3">
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Staff trained on CMS platforms and content workflows</div>
+    </div>
+    <div class="stat-block fade-up d4">
+      <div class="stat-number">CSM · CSPO</div>
+      <div class="stat-label">Dual-certified Scrum Master &amp; Product Owner — Scrum Alliance</div>
+    </div>
+  </div>
+</section>
+
+<!-- AI BANNER -->
+<div class="ai-banner" id="ai-work">
+  <div class="ai-banner-glyph">⬡</div>
+  <div>
+    <div class="ai-banner-eyebrow">Differentiator</div>
+    <h2>AI-Native Delivery Practitioner</h2>
+    <p>I actively build with AI tools — Claude, Claude Code, ChatGPT, and Gemini — to accelerate delivery, automate documentation, and surface product insights. This isn't adjacent to my delivery practice; it's embedded in it. From sprint artifact generation to research synthesis to coordinating delivery on an AI-powered product, I bring a genuine AI-first perspective to every phase of the product lifecycle.</p>
+    <div class="ai-tools-row">
+      <span class="ai-pill">Claude &amp; Claude Code</span>
+      <span class="ai-pill">ChatGPT</span>
+      <span class="ai-pill">Gemini</span>
+      <span class="ai-pill">Prompt engineering</span>
+      <span class="ai-pill">AI workflow automation</span>
+      <span class="ai-pill">Google AI Professional</span>
+    </div>
+  </div>
+</div>
+
+<!-- AI WORK -->
+<section style="border-bottom:1px solid var(--rule);">
+  <div class="section-inner" style="padding-top:3.5rem;padding-bottom:4rem;">
+    <div class="section-header">
+      <span class="section-eyebrow">AI Work</span>
+      <h2 class="section-title">How I Use AI in Practice</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="ai-work-grid">
+
+      <div class="ai-card ai-card-featured">
+        <div class="ai-card-tag">Flagship AI product · Open-Source Observatory</div>
+        <h3>Delivery on an AI-Powered Research Tool</h3>
+        <p>Supported QA and cross-team coordination on CFR's Open-Source Observatory — an AI-powered tool that surfaces and translates Chinese-language foreign policy content for CFR research analysts. Coordinated delivery across editorial, engineering, and IT to ensure quality and timeliness of AI-generated outputs at a policy research standard.</p>
+        <div class="ai-card-tools">
+          <span class="tool-tag">Machine translation</span>
+          <span class="tool-tag">QA coordination</span>
+          <span class="tool-tag">Cross-team delivery</span>
+          <span class="tool-tag">Policy research tooling</span>
+        </div>
+      </div>
+
+      <div class="ai-card">
+        <div class="ai-card-tag">Daily workflow · Sprint operations</div>
+        <h3>AI-Powered Sprint Artifact Generation</h3>
+        <p>I use Claude to accelerate sprint ceremony prep — generating first drafts of sprint goals, release notes, and stakeholder summaries from raw Jira data and standup notes. What used to take an hour per sprint now takes minutes, with more consistent structure and tone across all delivery communications.</p>
+        <div class="ai-card-tools">
+          <span class="tool-tag">Claude</span>
+          <span class="tool-tag">Jira data</span>
+          <span class="tool-tag">Release notes</span>
+          <span class="tool-tag">Prompt templates</span>
+        </div>
+      </div>
+
+      <div class="ai-card">
+        <div class="ai-card-tag">UX Research · CFR.org redesign</div>
+        <h3>AI-Assisted Interview Synthesis</h3>
+        <p>Used AI to synthesize patterns across stakeholder interviews — identifying theme clusters, surfacing contradictions, and generating affinity map scaffolds. Compressed a multi-day synthesis workshop into an afternoon of collaborative refinement with the design and product team.</p>
+        <div class="ai-card-tools">
+          <span class="tool-tag">Qualitative synthesis</span>
+          <span class="tool-tag">Theme clustering</span>
+          <span class="tool-tag">Affinity mapping</span>
+          <span class="tool-tag">Confluence</span>
+        </div>
+      </div>
+
+      <div class="ai-card">
+        <div class="ai-card-tag">Backlog management · Ongoing</div>
+        <h3>AI-Assisted Backlog Refinement &amp; Ticket Drafting</h3>
+        <p>I use AI to draft acceptance criteria and user stories from product briefs and Figma specs — giving engineers well-formed tickets with less rework. Also use AI-assisted prioritization rationale to support roadmap discussions and keep stakeholders aligned on trade-offs.</p>
+        <div class="ai-card-tools">
+          <span class="tool-tag">Jira</span>
+          <span class="tool-tag">Acceptance criteria</span>
+          <span class="tool-tag">User stories</span>
+          <span class="tool-tag">Roadmap</span>
+        </div>
+      </div>
+
+      <div class="ai-card ai-card-wide">
+        <div class="ai-card-tag">Cross-functional · Analytics &amp; SEO operations</div>
+        <h3>Data-Informed Product Decisions with AI-Augmented Analytics</h3>
+        <p>I leverage Google Analytics, Amplitude, and Parse.ly to guide data-informed product enhancements — and use AI to synthesize multi-platform analytics into stakeholder-ready summaries. For the WordPress VIP migration, I used AI to triage SEO audit findings, translate technical recommendations into sprint-ready tickets, and generate structured data documentation at pace with a multi-quarter migration.</p>
+        <div class="ai-card-tools">
+          <span class="tool-tag">Google Analytics</span>
+          <span class="tool-tag">Amplitude</span>
+          <span class="tool-tag">Parse.ly</span>
+          <span class="tool-tag">WordPress VIP</span>
+          <span class="tool-tag">Technical SEO</span>
+          <span class="tool-tag">Structured data</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="case-studies">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Work</span>
+      <h2 class="section-title">Case Studies</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="case-studies">
+
+      <div class="case-study">
+        <div class="case-meta">
+          <span class="case-number">01</span>
+          <span class="case-type">Agile Transformation</span>
+          <h3 class="case-title">Scaling Scrum Across a Multi-Team Digital Portfolio</h3>
+        </div>
+        <div class="case-body">
+          <p>Led the transition from ad-hoc project delivery to a structured Scrum practice across CFR's Product, Design, and Engineering organization — introducing ceremonies, tooling, and a shared delivery vocabulary that allowed multiple concurrent workstreams to operate at high velocity without collision.</p>
+          <ul class="outcome-list">
+            <li>Increased team delivery velocity 30% by championing Scrum best practices across editorial, engineering, IT, QA, and UX teams</li>
+            <li>Translated complex product goals into clear Jira user stories and sprint plans; maintained living documentation in Confluence</li>
+            <li>Established sprint cadence across CFR.org, MSP, Global Conflict Tracker, and Council of Councils</li>
+            <li>Served as strategic liaison across all delivery stakeholders to align goals and remove blockers</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-study">
+        <div class="case-meta">
+          <span class="case-number">02</span>
+          <span class="case-type">Platform Migration</span>
+          <h3 class="case-title">CFR.org WordPress VIP Migration</h3>
+        </div>
+        <div class="case-body">
+          <p>Led delivery management for CFR.org's migration to WordPress VIP — coordinating a phased launch plan across engineering, content, design, and external vendors while managing risk, dependencies, and stakeholder communication across a multi-quarter engagement.</p>
+          <ul class="outcome-list">
+            <li>Owned the WP CFR Launch Plan in Confluence as the single source of truth for the migration</li>
+            <li>Managed vendor relationship and sprint alignment with design partner Upstatement</li>
+            <li>Oversaw UAT governance and stakeholder sign-off across all phased releases</li>
+            <li>Coordinated technical SEO requirements with external consultant Barry Adams</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-study">
+        <div class="case-meta">
+          <span class="case-number">03</span>
+          <span class="case-type">UX Research &amp; Design</span>
+          <h3 class="case-title">Stakeholder Research for the CFR.org Redesign</h3>
+        </div>
+        <div class="case-body">
+          <p>Facilitated and synthesized stakeholder interviews to surface user needs and organizational priorities ahead of the CFR.org redesign. Translated qualitative findings into a structured synthesis that informed the design system and information architecture decisions.</p>
+          <ul class="outcome-list">
+            <li>Managed end-to-end research logistics: scheduling, facilitation, and synthesis</li>
+            <li>Produced a Confluence-hosted Interview Synthesis with affinity mapping and key themes</li>
+            <li>Surfaced content prioritization insights that shaped navigation architecture</li>
+            <li>Collaborated with Upstatement on translating research into design direction</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-study">
+        <div class="case-meta">
+          <span class="case-number">04</span>
+          <span class="case-type">Training &amp; Enablement</span>
+          <h3 class="case-title">CMS Training, Onboarding &amp; Delivery Documentation</h3>
+        </div>
+        <div class="case-body">
+          <p>Built a comprehensive onboarding and delivery knowledge base to reduce ramp time for new engineers, designers, and content staff. Trained 100+ staff on CMS platforms, e-newsletter publishing, and content optimization workflows over five years.</p>
+          <ul class="outcome-list">
+            <li>Created and maintained the CFR.org Redesign and Migration Guide in Confluence</li>
+            <li>Documented UAT governance protocols and sign-off processes for all stakeholder-facing releases</li>
+            <li>Established Airtable-based QA and UAT testing timelines used across four platforms</li>
+            <li>Enabled faster vendor onboarding for design partner Upstatement and external technical teams</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Skills</span>
+      <h2 class="section-title">Areas of Expertise</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <h3>Delivery Leadership</h3>
+        <ul>
+          <li>Scrum · Kanban · Agile delivery</li>
+          <li>Sprint planning &amp; backlog grooming</li>
+          <li>Release &amp; dependency management</li>
+          <li>UAT governance &amp; sign-off</li>
+          <li>Vendor &amp; partner management</li>
+          <li>Executive &amp; stakeholder communication</li>
+        </ul>
+      </div>
+      <div class="expertise-card">
+        <h3>Product &amp; Research</h3>
+        <ul>
+          <li>Roadmap planning &amp; prioritization</li>
+          <li>UX research: surveys, analytics, testing</li>
+          <li>Stakeholder interview facilitation</li>
+          <li>Business analysis &amp; acceptance criteria</li>
+          <li>Data-informed product decisions</li>
+          <li>Pixel impl. · UTM · tracking QA</li>
+        </ul>
+      </div>
+      <div class="expertise-card">
+        <h3>AI &amp; Automation</h3>
+        <ul>
+          <li>Claude, Claude Code, ChatGPT, Gemini</li>
+          <li>AI integration &amp; prompt engineering</li>
+          <li>AI-assisted sprint artifact generation</li>
+          <li>AI-powered research synthesis</li>
+          <li>Workflow automation (Airtable)</li>
+          <li>AI product QA &amp; delivery</li>
+        </ul>
+      </div>
+      <div class="expertise-card">
+        <h3>Analytics &amp; Tracking</h3>
+        <ul>
+          <li>Google Analytics · Amplitude · Parse.ly</li>
+          <li>Pixel implementation &amp; UTM tracking</li>
+          <li>Tracking QA coordination</li>
+          <li>Data-driven product enhancements</li>
+          <li>Paid social (Meta Ads, Google Ads)</li>
+        </ul>
+      </div>
+      <div class="expertise-card">
+        <h3>Platform &amp; Tools</h3>
+        <ul>
+          <li>Jira &amp; Confluence (Atlassian Cloud)</li>
+          <li>Airtable (delivery systems)</li>
+          <li>Figma · Zeplin · GitHub</li>
+          <li>WordPress VIP · Drupal</li>
+          <li>Slack · Adobe Creative Cloud</li>
+        </ul>
+      </div>
+      <div class="expertise-card">
+        <h3>Digital Products</h3>
+        <ul>
+          <li>CFR.org (flagship editorial platform)</li>
+          <li>Member Services Portal</li>
+          <li>Global Conflict Tracker</li>
+          <li>Council of Councils</li>
+          <li>Open-Source Observatory (AI tool)</li>
+          <li>CFR Design System</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="certs-row">
+      <div class="cert-card">
+        <span class="cert-label">Certification</span>
+        <span class="cert-name">Google AI Professional</span>
+        <span class="cert-org">Google</span>
+        <span class="cert-date">May 2026</span>
+      </div>
+      <div class="cert-card">
+        <span class="cert-label">Certification</span>
+        <span class="cert-name">UX Research at Scale: Surveys, Analytics, Online Testing</span>
+        <span class="cert-org">University of Michigan</span>
+        <span class="cert-date">Dec 2025</span>
+      </div>
+      <div class="cert-card">
+        <span class="cert-label">Certification</span>
+        <span class="cert-name">Certified ScrumMaster® (CSM)</span>
+        <span class="cert-org">Scrum Alliance</span>
+      </div>
+      <div class="cert-card">
+        <span class="cert-label">Certification</span>
+        <span class="cert-name">Certified Scrum Product Owner® (CSPO)</span>
+        <span class="cert-org">Scrum Alliance</span>
+      </div>
+      <div class="cert-card">
+        <span class="cert-label">Education</span>
+        <span class="cert-name">Post-Baccalaureate Certificate — Information Systems Analysis</span>
+        <span class="cert-org">Tulane University · School of Continuing Studies</span>
+      </div>
+      <div class="cert-card">
+        <span class="cert-label">Education</span>
+        <span class="cert-name">B.A., Political Science</span>
+        <span class="cert-org">Miami University, Oxford, OH</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">History</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-entry">
+        <div class="timeline-date">Nov 2021 – Present</div>
+        <div class="timeline-content">
+          <div class="ai-badge">AI-Native Practice</div>
+          <h3>Delivery Manager / Scrum Master</h3>
+          <div class="timeline-org">Council on Foreign Relations · New York, NY</div>
+          <ul>
+            <li>Increased team delivery velocity 30% by championing Scrum best practices — sprint planning, backlog grooming, and retrospectives — across editorial, engineering, IT, QA, and UX teams</li>
+            <li>Translated complex product goals into clear Jira user stories and sprint plans; maintained living documentation in Confluence and served as strategic liaison across all delivery stakeholders</li>
+            <li>Supported QA and cross-team coordination on the Open-Source Observatory, an AI-powered tool that surfaces translated Chinese-language foreign policy content for CFR research analysts</li>
+            <li>Leveraged Google Analytics, Amplitude, and Parse.ly to guide data-informed product enhancements; coordinated pixel implementation, UTM generation, and tracking QA</li>
+            <li>Managed external vendor and partner relationships — tracking performance, managing deliverable documentation, and coordinating sign-offs across legal, editorial, privacy, and engineering stakeholders</li>
+            <li>Actively incorporated Claude, Claude Code, ChatGPT, and Gemini into delivery workflows to accelerate documentation, research synthesis, and backlog refinement</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-date">Jan 2016 – Nov 2021</div>
+        <div class="timeline-content">
+          <h3>Web Support Associate</h3>
+          <div class="timeline-org">Council on Foreign Relations · New York, NY</div>
+          <ul>
+            <li>Trained 100+ staff on CMS platforms (Drupal, WordPress), e-newsletter publishing, and content optimization workflows</li>
+            <li>Spearheaded UX research initiatives that shaped the development of new digital platforms</li>
+            <li>Managed high-volume web content production and platform troubleshooting, ensuring continuous uptime against editorial deadlines</li>
+            <li>Supported onboarding of new digital platforms, media documentation, and invoice reconciliation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-date">Sep 2015 – Jan 2016</div>
+        <div class="timeline-content">
+          <h3>Digital Marketing Coordinator</h3>
+          <div class="timeline-org">Willis Group · New York, NY</div>
+          <ul>
+            <li>Executed targeted paid social campaigns across Facebook and Twitter</li>
+            <li>Developed editorial calendars and content strategies aligned to business goals</li>
+            <li>Managed creative trafficking, UTM tracking, and audience engagement reporting</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Proficiency</span>
+      <h2 class="section-title">Tool Proficiency</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-name">Jira</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill skill-bar-copper" data-w="97"></div></div>
+        <div class="skill-category">Project tracking</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Confluence</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill skill-bar-copper" data-w="95"></div></div>
+        <div class="skill-category">Documentation</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Airtable</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill skill-bar-copper" data-w="90"></div></div>
+        <div class="skill-category">Delivery systems</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Claude / AI Tools</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill skill-bar-blue" data-w="93"></div></div>
+        <div class="skill-category">AI-enhanced delivery</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Google Analytics</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill skill-bar-copper" data-w="85"></div></div>
+        <div class="skill-category">Analytics</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Amplitude · Parse.ly</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill skill-bar-copper" data-w="80"></div></div>
+        <div class="skill-category">Product analytics</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Figma · Zeplin</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill skill-bar-copper" data-w="80"></div></div>
+        <div class="skill-category">Design collaboration</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">WordPress VIP · Drupal</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill skill-bar-copper" data-w="78"></div></div>
+        <div class="skill-category">CMS platforms</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <p style="font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--copper);margin-bottom:1rem;">Get in touch</p>
+        <h2 class="contact-headline">Let's talk<br>about<br><em>delivery.</em></h2>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:donnieraybolen@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">donnieraybolen@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:6142187361" class="contact-link">
+          <span class="contact-link-icon">↗</span>
+          <div>
+            <div class="contact-link-label">Phone</div>
+            <div class="contact-link-value">(614) 218-7361</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/donniebolen" class="contact-link" target="_blank" rel="noopener">
+          <span class="contact-link-icon">→</span>
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-value">linkedin.com/in/donniebolen</div>
+          </div>
+        </a>
+        <a href="https://dbolen.github.io" class="contact-link" target="_blank" rel="noopener">
+          <span class="contact-link-icon">⌥</span>
+          <div>
+            <div class="contact-link-label">Portfolio</div>
+            <div class="contact-link-value">dbolen.github.io</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Donnie Bolen — Delivery Manager &amp; Scrum Master · New York, NY</p>
+  <p>dbolen.github.io · Updated May 2026</p>
+</footer>
+
+<script>
+  const fills = document.querySelectorAll('.skill-bar-fill[data-w]');
+  fills.forEach(el => { el.style.width = '0%'; });
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.width = e.target.getAttribute('data-w') + '%';
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  fills.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
